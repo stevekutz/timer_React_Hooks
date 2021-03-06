@@ -116,6 +116,7 @@ const Timer = (props) => {
                 sec_ones = {timeVal.format('ss').slice(-1)}
                 // secondsCount = {secondsCount}    
             
+                timerActive = {timerActive}
             
             />
 
