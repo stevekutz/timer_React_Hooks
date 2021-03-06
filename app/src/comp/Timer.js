@@ -2,6 +2,12 @@ import React, {useState, useEffect} from 'react';
 import TimerDisplay from './TimerDisplay';
 
 
+var dayjs = require('dayjs');
+
+// var startOfDay = require('date-fns/startOfDay')
+// var add = require('date-fns/add');
+// var sub = require('date-fns/sub');
+
 const Timer = (props) => {
 
     const currentDate = new Date().toDateString();
@@ -13,6 +19,9 @@ const Timer = (props) => {
     //      
     const [secondsDateCount, setSecondsDateCount] = useState();
     const [secondsCount, setSecondsCount] = useState(0);
+    
+    const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
+    
     const [timerActive, setTimerActive] = useState(false);
     const [timerStartStop, setTimerStartStop] = useState('Start');
 
@@ -66,24 +75,25 @@ const Timer = (props) => {
     // }, [timerActive])
 
 
-    // similar to mix of componentDidMount + componentDidUpdate + componentWillUnmount
-    useEffect( () => {
-        if(timerActive) {
-            const timer = setInterval(
-                () => {setSecondsCount(secondsCount + 1)}
-            , 100)
+    // // similar to mix of componentDidMount + componentDidUpdate + componentWillUnmount
+    // useEffect( () => {
+    //     if(timerActive) {
+    //         const timer = setInterval(
+    //             // () => {setSecondsCount(secondsCount + 1)}
+    //             () => {setTimeVal(startOfDay(new Date()))}
+    //         , 100)
 
-            setTimerStartStop('Stop');   
-            // cancels operation of timer, this allows single increment else this starts count up from 0
-            return () => clearInterval(timer);
+    //         setTimerStartStop('Stop');   
+    //         // cancels operation of timer, this allows single increment else this starts count up from 0
+    //         return () => clearInterval(timer);
               
-        }
+    //     }
 
-        setTimerStartStop('Start')
+    //     setTimerStartStop('Start')
 
     
-    //}, [])     // this is original Hook
-    }, [timerActive, secondsCount]);   // refactored
+    // //}, [])     // this is original Hook
+    // }, [timerActive, timeVal]);   // refactored
 
 
     useEffect( () => {
@@ -99,15 +109,17 @@ const Timer = (props) => {
 
         <div>
             <TimerDisplay 
-                // min_tens = "5"
-                // min_ones = "8"
-                // colon = ":"
-                // sec_tens = "4"
-                // sec_ones = "7"
-                secondsCount = {secondsCount}    
+                min_tens = {timeVal.format('mm').slice(-2,1)}
+                min_ones = {timeVal.format('mm').slice(-1)}
+                colon = ":"
+                sec_tens = {timeVal.format('ss').slice(-2,1)}
+                sec_ones = {timeVal.format('ss').slice(-1)}
+                // secondsCount = {secondsCount}    
             
             
             />
+
+            <p> timeVal is {timeVal.toString()}</p>
             <p> Direct call to date is:  {currentDate} </p>
             <p> Date with seconds count : {secondsDateCount} </p>
             <div>

@@ -28,113 +28,113 @@ const TimerDisplay = (props) => {
     // console.log("Inside TimerDisplay", typeof(props.secondsCount));
 
 
-    useEffect( () => {
-        // update seconds
+    // useEffect( () => {
+    //     // update seconds
         
-        let stringNum = props.secondsCount.toString();
-        console.log("stringNum ", stringNum);
+    //     let stringNum = props.secondsCount.toString();
+    //     console.log("stringNum ", stringNum);
 
-        // let justSeconds = 0;
+    //     // let justSeconds = 0;
 
-        // const handleDigits = (numStr) => {
-        //     console.log(">>> inside handelDigits >>>  ", numStr);
+    //     // const handleDigits = (numStr) => {
+    //     //     console.log(">>> inside handelDigits >>>  ", numStr);
 
-        //     if (numStr === 0) {
-        //         setSecDigits('00');
-        //         setMinDigits 
-        //     } else if (numStr <= '9') {
-        //         setSecDigits('0' + numStr);
-        //     }
-        // }    
-
-
-
-        if (Number(stringNum) < 0 ) {
-            console.log("COUNT below ZERO");
-        } else if (stringNum === 0) {
-            setSecDigits('00');
-            // setMinDigits('00');  // no effect on minute reset issue
-            // setMinCount(0);
-        } else if (stringNum >= 0 && stringNum < 10) {
-            setSecDigits('0' + stringNum);
-            setMinDigits('00');  // resolves reset issue
-            setMinCount(0);
-        } else if (stringNum >= 10 && stringNum <= 59) {
-            setSecDigits(stringNum);
-        } else if (stringNum >= 60 && stringNum <= 3599) {
-            setMinCount(Math.floor(stringNum / 60).toString());
-
-            if ( minCount >= 1 && minCount < 10) {
-                setMinDigits('0' + minCount.toString())
-            } else if (minCount >= 10 && minCount <= 59) {
-                setMinDigits(minCount)
-            } else {
-                console.log("*** Over an HOUR ***")
-            }
-
-            setJustSeconds((props.secondsCount -  minCount * 60).toString());
-
-            if (justSeconds < 10) {
-                setSecDigits('0' + justSeconds);
-            } else if (justSeconds >= 10 && justSeconds <= 59) {
-                setSecDigits(justSeconds)
-            }
+    //     //     if (numStr === 0) {
+    //     //         setSecDigits('00');
+    //     //         setMinDigits 
+    //     //     } else if (numStr <= '9') {
+    //     //         setSecDigits('0' + numStr);
+    //     //     }
+    //     // }    
 
 
-        }
+
+    //     if (Number(stringNum) < 0 ) {
+    //         console.log("COUNT below ZERO");
+    //     } else if (stringNum === 0) {
+    //         setSecDigits('00');
+    //         // setMinDigits('00');  // no effect on minute reset issue
+    //         // setMinCount(0);
+    //     } else if (stringNum >= 0 && stringNum < 10) {
+    //         setSecDigits('0' + stringNum);
+    //         setMinDigits('00');  // resolves reset issue
+    //         setMinCount(0);
+    //     } else if (stringNum >= 10 && stringNum <= 59) {
+    //         setSecDigits(stringNum);
+    //     } else if (stringNum >= 60 && stringNum <= 3599) {
+    //         setMinCount(Math.floor(stringNum / 60).toString());
+
+    //         if ( minCount >= 1 && minCount < 10) {
+    //             setMinDigits('0' + minCount.toString())
+    //         } else if (minCount >= 10 && minCount <= 59) {
+    //             setMinDigits(minCount)
+    //         } else {
+    //             console.log("*** Over an HOUR ***")
+    //         }
+
+    //         setJustSeconds((props.secondsCount -  minCount * 60).toString());
+
+    //         if (justSeconds < 10) {
+    //             setSecDigits('0' + justSeconds);
+    //         } else if (justSeconds >= 10 && justSeconds <= 59) {
+    //             setSecDigits(justSeconds)
+    //         }
+
+
+    //     }
     
 
 
 
-        // if (props.secondsCount === 0) {
-        //     setMinCount('0');
-        //     setSec_Ones('0')
-        //     console.log("should reset minutes here");
-        // }
+    //     // if (props.secondsCount === 0) {
+    //     //     setMinCount('0');
+    //     //     setSec_Ones('0')
+    //     //     console.log("should reset minutes here");
+    //     // }
 
-        // // findSeconds(timeVal) {
-        // //     if 
+    //     // // findSeconds(timeVal) {
+    //     // //     if 
         
-        // // }
+    //     // // }
 
-        // // seconds_Ones
-        // setSec_Ones(stringNum.slice(-1))
+    //     // // seconds_Ones
+    //     // setSec_Ones(stringNum.slice(-1))
 
-        // if (stringNum < 10) {
-        //     setSec_Tens('0');
-        //     setMin_Ones('0');
-        //     setMin_Tens('0');
-        // }
-        // else if(stringNum >= 10 && stringNum <= 59) {
-        //     setSec_Tens(stringNum.slice(-2, 1));         
-        // } else if(stringNum >=60 && stringNum <= 3599) {
+    //     // if (stringNum < 10) {
+    //     //     setSec_Tens('0');
+    //     //     setMin_Ones('0');
+    //     //     setMin_Tens('0');
+    //     // }
+    //     // else if(stringNum >= 10 && stringNum <= 59) {
+    //     //     setSec_Tens(stringNum.slice(-2, 1));         
+    //     // } else if(stringNum >=60 && stringNum <= 3599) {
             
-        //     setMinCount(Math.floor(stringNum / 60).toString()); // try as STRING
-        //     setMin_Ones(minCount);
+    //     //     setMinCount(Math.floor(stringNum / 60).toString()); // try as STRING
+    //     //     setMin_Ones(minCount);
             
-        //     if(minCount >= 10 && stringNum <=59) {
-        //         // set() //  manage minutes settings here
-        //     }
+    //     //     if(minCount >= 10 && stringNum <=59) {
+    //     //         // set() //  manage minutes settings here
+    //     //     }
 
-        //     setJustSeconds((props.secondsCount -  minCount * 60).toString());
+    //     //     setJustSeconds((props.secondsCount -  minCount * 60).toString());
             
-        //     if (justSeconds < 10) {
-        //         setSec_Tens('0');
-        //     }
-        //     else if(justSeconds >= 10 && justSeconds <= 59) {
-        //         setSec_Tens(justSeconds.slice(-2, 1)); 
-        //     }
+    //     //     if (justSeconds < 10) {
+    //     //         setSec_Tens('0');
+    //     //     }
+    //     //     else if(justSeconds >= 10 && justSeconds <= 59) {
+    //     //         setSec_Tens(justSeconds.slice(-2, 1)); 
+    //     //     }
         
-        // } else {
-        //     console.log("we hit 1 hour ")
-        // }    
+    //     // } else {
+    //     //     console.log("we hit 1 hour ")
+    //     // }    
 
 
             
         
 
     
-    } , [minCount, justSeconds, props.secondsCount])
+    // } , [minCount, justSeconds, props.secondsCount])
 
 
     return (

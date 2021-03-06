@@ -33,6 +33,18 @@ const DisplayColonDiv = styled.div`
     width: 5px;
 `
 
+const DisplayTimeUnitContainer = styled.div`
+    border: 1px solid green;
+
+    display flex:
+    justify-content: center;
+    align-content: center;
+
+
+
+`
+
+
 const DisplayDigitText = styled.div`
     border: 1px solid yellow;
     width: 25px;
