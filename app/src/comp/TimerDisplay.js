@@ -5,8 +5,11 @@ import {
     DisplayColonDiv,
     DisplayDigitTextDiv,
     DisplayTimeUnitContainerDiv,
-    DisplayDigitsControllerCoontainer,
+    DisplayDigitsControllerContainer,
     IncDecControlButton,
+    TimerControlContainerDiv,
+    StartStopButton,
+    ResetButton
 
 } from '../styled/timer_display_style';
 
@@ -141,44 +144,41 @@ const TimerDisplay = (props) => {
 
 
     return (
-            <DisplayContainerDiv>
-                <DisplayDigitContainerDiv>
+        <DisplayContainerDiv>
+            <DisplayDigitContainerDiv>
 
-                <DisplayDigitsControllerCoontainer>
+                <DisplayDigitsControllerContainer>
                     <IncDecControlButton> + </IncDecControlButton>
                     <DisplayTimeUnitContainerDiv>
                         <DisplayDigitTextDiv> {props.min_tens} </DisplayDigitTextDiv>
                         <DisplayDigitTextDiv> {props.min_ones} </DisplayDigitTextDiv>
                     </DisplayTimeUnitContainerDiv>
                     <IncDecControlButton> - </IncDecControlButton>
-                
-                
-                
-                </DisplayDigitsControllerCoontainer>    
-                
-                
+                </DisplayDigitsControllerContainer>    
                 
                 <DisplayColonDiv> {colonText} </DisplayColonDiv>
 
+                <DisplayDigitsControllerContainer>
 
-                <DisplayDigitsControllerCoontainer>
-                
                     <IncDecControlButton> + </IncDecControlButton>
                     <DisplayTimeUnitContainerDiv>
                         <DisplayDigitTextDiv> {props.sec_tens} </DisplayDigitTextDiv>
                         <DisplayDigitTextDiv> {props.sec_ones} </DisplayDigitTextDiv>
                     </DisplayTimeUnitContainerDiv>
                     <IncDecControlButton> - </IncDecControlButton>
-                
-                
-                </DisplayDigitsControllerCoontainer>
+                                
+                </DisplayDigitsControllerContainer>
 
-                
-                
-                </DisplayDigitContainerDiv>
-            
-            
-            </DisplayContainerDiv>
+            </DisplayDigitContainerDiv>
+        
+        <TimerControlContainerDiv>
+            <StartStopButton> {props.timerStartStop} </StartStopButton>
+            <ResetButton> Reset </ResetButton>
+        </TimerControlContainerDiv>
+
+
+
+        </DisplayContainerDiv>
 
     )
 

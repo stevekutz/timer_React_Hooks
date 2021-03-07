@@ -117,7 +117,7 @@ const Timer = (props) => {
                 // secondsCount = {secondsCount}    
             
                 timerActive = {timerActive}
-            
+                timerStartStop = {timerStartStop}
             />
 
             <p> timeVal is {timeVal.toString()}</p>

@@ -34,7 +34,7 @@ const DisplayColonDiv = styled.div`
     width: 5px;
 `
 
-const DisplayDigitsControllerCoontainer = styled.div`
+const DisplayDigitsControllerContainer = styled.div`
     border: 1px solid orange;
 
     display: flex;
@@ -60,9 +60,18 @@ const DisplayTimeUnitContainerDiv = styled.div`
 `
 const DisplayDigitTextDiv = styled.div`
     border: 1px solid yellow;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 20px;
     height: 25px;
     color: lightgray;
+
+    font-size: 24px;
+
+    
 `
 const IncDecControlButton = styled.button`
     border: 2px solid magenta;
@@ -77,6 +86,7 @@ const IncDecControlButton = styled.button`
     display: flex;
     justify-content: center;
     align-content: center;
+    align-items: center;
 
 
 
@@ -86,7 +96,51 @@ const IncDecControlButton = styled.button`
         font-weight: bolder;
     }
 
-`
+    `
+
+    const TimerControlContainerDiv = styled.div`
+        border: 1px solid seagreen;
+
+
+        width: 200px;
+        display: flex;
+        margin: 0 auto;
+        padding: 5px;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+    
+    `
+
+
+    const TimerControlButton = styled.button`
+        // border: 1px solid rebeccapurple;
+
+        width: 80px;
+        height: 25px;
+
+        outline-style: none;
+        border-radius: 15px;
+    
+    
+    
+    `
+
+    const StartStopButton = styled(TimerControlButton)`
+        color: ${props => props.timerActive ? '#B30000' : 'seagreen'};
+        background: ${props => props.timerActive ? 'pink' : '#C7FFEE'};
+        border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid #11B535'}
+    
+    `
+
+
+    const ResetButton = styled(TimerControlButton)`
+        color: ${props => props.timerActive ? 'white' : 'grey'};
+        background: ${props => props.timerActive ? '#525555' : '#C2C8C7'};
+        border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid seagreen'}
+    
+    
+    `
 
 
 export {
@@ -95,6 +149,10 @@ export {
     DisplayColonDiv,
     DisplayDigitTextDiv,
     DisplayTimeUnitContainerDiv,
-    DisplayDigitsControllerCoontainer,
+    DisplayDigitsControllerContainer,
     IncDecControlButton,
+    TimerControlContainerDiv,
+    TimerControlButton,
+    StartStopButton,
+    ResetButton
 };
