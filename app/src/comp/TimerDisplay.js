@@ -29,118 +29,17 @@ const TimerDisplay = (props) => {
 
     const [secDigits, setSecDigits] = useState('00');
     const [minDigits, setMinDigits] = useState('00');
+    const [color, setColor] = useState('red');
+    const [background, setBackground] = useState('#B30000');
+    const [border, setBorder] = useState('2px solid paelvioletred');
+
+    useEffect( () => {
+        color: {props.timerActive ? setColor('red') : setColor('blue')};
+        background: {props.timerActive ? setBackground('pink') : setBackground('#C7FFEE')};
+        border: {props.timerActive ? setBorder('2px solid palevioletred') : setBorder('2px solid seagreen')};
 
 
-    // console.log("Inside TimerDisplay", typeof(props.secondsCount));
-
-
-    // useEffect( () => {
-    //     // update seconds
-        
-    //     let stringNum = props.secondsCount.toString();
-    //     console.log("stringNum ", stringNum);
-
-    //     // let justSeconds = 0;
-
-    //     // const handleDigits = (numStr) => {
-    //     //     console.log(">>> inside handelDigits >>>  ", numStr);
-
-    //     //     if (numStr === 0) {
-    //     //         setSecDigits('00');
-    //     //         setMinDigits 
-    //     //     } else if (numStr <= '9') {
-    //     //         setSecDigits('0' + numStr);
-    //     //     }
-    //     // }    
-
-
-
-    //     if (Number(stringNum) < 0 ) {
-    //         console.log("COUNT below ZERO");
-    //     } else if (stringNum === 0) {
-    //         setSecDigits('00');
-    //         // setMinDigits('00');  // no effect on minute reset issue
-    //         // setMinCount(0);
-    //     } else if (stringNum >= 0 && stringNum < 10) {
-    //         setSecDigits('0' + stringNum);
-    //         setMinDigits('00');  // resolves reset issue
-    //         setMinCount(0);
-    //     } else if (stringNum >= 10 && stringNum <= 59) {
-    //         setSecDigits(stringNum);
-    //     } else if (stringNum >= 60 && stringNum <= 3599) {
-    //         setMinCount(Math.floor(stringNum / 60).toString());
-
-    //         if ( minCount >= 1 && minCount < 10) {
-    //             setMinDigits('0' + minCount.toString())
-    //         } else if (minCount >= 10 && minCount <= 59) {
-    //             setMinDigits(minCount)
-    //         } else {
-    //             console.log("*** Over an HOUR ***")
-    //         }
-
-    //         setJustSeconds((props.secondsCount -  minCount * 60).toString());
-
-    //         if (justSeconds < 10) {
-    //             setSecDigits('0' + justSeconds);
-    //         } else if (justSeconds >= 10 && justSeconds <= 59) {
-    //             setSecDigits(justSeconds)
-    //         }
-
-
-    //     }
-    
-
-
-
-    //     // if (props.secondsCount === 0) {
-    //     //     setMinCount('0');
-    //     //     setSec_Ones('0')
-    //     //     console.log("should reset minutes here");
-    //     // }
-
-    //     // // findSeconds(timeVal) {
-    //     // //     if 
-        
-    //     // // }
-
-    //     // // seconds_Ones
-    //     // setSec_Ones(stringNum.slice(-1))
-
-    //     // if (stringNum < 10) {
-    //     //     setSec_Tens('0');
-    //     //     setMin_Ones('0');
-    //     //     setMin_Tens('0');
-    //     // }
-    //     // else if(stringNum >= 10 && stringNum <= 59) {
-    //     //     setSec_Tens(stringNum.slice(-2, 1));         
-    //     // } else if(stringNum >=60 && stringNum <= 3599) {
-            
-    //     //     setMinCount(Math.floor(stringNum / 60).toString()); // try as STRING
-    //     //     setMin_Ones(minCount);
-            
-    //     //     if(minCount >= 10 && stringNum <=59) {
-    //     //         // set() //  manage minutes settings here
-    //     //     }
-
-    //     //     setJustSeconds((props.secondsCount -  minCount * 60).toString());
-            
-    //     //     if (justSeconds < 10) {
-    //     //         setSec_Tens('0');
-    //     //     }
-    //     //     else if(justSeconds >= 10 && justSeconds <= 59) {
-    //     //         setSec_Tens(justSeconds.slice(-2, 1)); 
-    //     //     }
-        
-    //     // } else {
-    //     //     console.log("we hit 1 hour ")
-    //     // }    
-
-
-            
-        
-
-    
-    // } , [minCount, justSeconds, props.secondsCount])
+    }, [props.timerActive]);
 
 
     return (
@@ -173,7 +72,10 @@ const TimerDisplay = (props) => {
         
         <TimerControlContainerDiv>
             <div> {props.timerActive.toString()}</div>
-            <StartStopButton onClick = {props.toggleTimer_handler}> {props.timerStartStop} </StartStopButton>
+            <StartStopButton 
+                onClick = {props.toggleTimer_handler}
+                style = {{color, background, border}}    
+            > {props.timerStartStop} </StartStopButton>
             <ResetButton onClick = {props.resetTimer_handler}> Reset </ResetButton>
         </TimerControlContainerDiv>
 
