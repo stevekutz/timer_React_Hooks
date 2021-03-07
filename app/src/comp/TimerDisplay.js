@@ -18,30 +18,6 @@ const TimerDisplay = (props) => {
 
     const colonText = ':';
 
-    const [min_Ones, setMin_Ones] = useState('0');
-    const [min_Tens, setMin_Tens] = useState('0');
-    const [sec_Ones, setSec_Ones] = useState('0');
-    const [sec_Tens, setSec_Tens] = useState('0');
-
-    const [justSeconds, setJustSeconds] = useState('0');
-    const [minCount, setMinCount] = useState(0);
-
-
-    const [secDigits, setSecDigits] = useState('00');
-    const [minDigits, setMinDigits] = useState('00');
-    // const [color, setColor] = useState('red');
-    // const [background, setBackground] = useState('#B30000');
-    // const [border, setBorder] = useState('2px solid paelvioletred');
-
-    // useEffect( () => {
-    //     color: {props.timerActive ? setColor('red') : setColor('blue')};
-    //     background: {props.timerActive ? setBackground('pink') : setBackground('#C7FFEE')};
-    //     border: {props.timerActive ? setBorder('2px solid palevioletred') : setBorder('2px solid seagreen')};
-
-
-    // }, [props.timerActive]);
-
-
     return (
         <DisplayContainerDiv>
             <DisplayDigitContainerDiv>
@@ -93,17 +69,3 @@ const TimerDisplay = (props) => {
 
 
 export default TimerDisplay;
-/*
-    <DisplayDigitText> {min_Tens} </DisplayDigitText>
-    <DisplayDigitText> {min_Ones} </DisplayDigitText>
-    <DisplayColonDiv> {colonText} </DisplayColonDiv>
-    <DisplayDigitText> {sec_Tens} </DisplayDigitText>
-    <DisplayDigitText> {sec_Ones} </DisplayDigitText>
-*/    
-
-
-/*
-    <DisplayDigitText> {minDigits} </DisplayDigitText>
-    <DisplayColonDiv> {colonText} </DisplayColonDiv>
-    <DisplayDigitText> {secDigits} </DisplayDigitText>
-*/

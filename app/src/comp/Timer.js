@@ -18,24 +18,10 @@ const Timer = (props) => {
     //      DO NOT call Hooks from inside functions, conditions,
     //      
     const [secondsDateCount, setSecondsDateCount] = useState();
-    const [secondsCount, setSecondsCount] = useState(0);
-    
     const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
     
     const [timerActive, setTimerActive] = useState(false);
     const [timerStartStop, setTimerStartStop] = useState('Start');
-
-    // const [timerDirection, setTimerDirection] = useState('up');
-    // const [ timeCount, setTimeCount] = useState(new Date());
-
-    // const countTime = (dir) => {
-    //     if (dir) {
-    //         setTimerDirection('up')
-    //     }
-    
-    
-    // }
-
 
     const toggleTimer = () => {
         setTimerActive(!timerActive);
@@ -121,7 +107,6 @@ const Timer = (props) => {
     })    
 
     
-
     return (
 
 
@@ -147,7 +132,7 @@ const Timer = (props) => {
 
             />
 
-            <p style = {{border: '1px solid red', width: '500px'}}> timeVal is <span style = {{width: '350px'}}>  {timeVal.toString()} </span> </p>
+            <p style = {{border: '1px solid red', width: '500px'}}> timeVal is <span style = {{minWidth: '350px'}}>  {timeVal.toString()} </span> </p>
             <p> Direct call to date is:  {currentDate} </p>
             <p> Date with seconds count : {secondsDateCount} </p>
             <div>
@@ -155,9 +140,8 @@ const Timer = (props) => {
                 <button onClick = {resetTimer}> Reset </button>
             
             </div>
-            <h2> Seconds Count : {secondsCount}</h2>
 
-            
+          
         </div>
     
     
