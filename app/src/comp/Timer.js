@@ -147,7 +147,7 @@ const Timer = (props) => {
 
             />
 
-            <p> timeVal is {timeVal.toString()}</p>
+            <p style = {{border: '1px solid red', width: '500px'}}> timeVal is <span style = {{width: '350px'}}>  {timeVal.toString()} </span> </p>
             <p> Direct call to date is:  {currentDate} </p>
             <p> Date with seconds count : {secondsDateCount} </p>
             <div>

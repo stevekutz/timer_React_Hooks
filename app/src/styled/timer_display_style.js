@@ -133,11 +133,13 @@ const IncDecControlButton = styled.button`
 
     const StartStopButton = styled(TimerControlButton)`
     
-        color: ${props => props.timerActive ? 'red' : 'blue'};
+        color: ${props => props.timerActive ? '#B30000' : 'seagreen'};
         background: ${props => props.timerActive ? 'pink' : '#C7FFEE'};
         border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid seagreen'};
 
-
+        : active {
+            border: 2px solid orange;
+        }
     `
 
         // color: ${props => props.timerActive ? '#B3000' : 'seagreen'};
@@ -145,11 +147,13 @@ const IncDecControlButton = styled.button`
         // border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid #11B535'}
 
     const ResetButton = styled(TimerControlButton)`
-        color: ${props => props.timerActive ? 'white' : 'grey'};
+        color: ${props => props.timerActive ? 'seashell' : 'grey'};
         background: ${props => props.timerActive ? '#525555' : '#C2C8C7'};
-        border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid seagreen'}
-    
-    
+        border: ${props => props.timerActive ? '2px solid #9DA1A1' : '2px solid dimgray'};
+
+        : active {
+            border: 2px solid orange;
+        }
     `
 
 
@@ -166,3 +170,8 @@ export {
     StartStopButton,
     ResetButton
 };
+
+
+        // color: ${props => props.timerActive ? 'seashell' : 'grey'};
+        // background: ${props => props.timerActive ? '#525555' : '#C2C8C7'};
+        // border: ${props => props.timerActive ? '2px solid #9DA1A1' : '2px solid blue'}

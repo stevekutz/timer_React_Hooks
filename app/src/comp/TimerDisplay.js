@@ -29,17 +29,17 @@ const TimerDisplay = (props) => {
 
     const [secDigits, setSecDigits] = useState('00');
     const [minDigits, setMinDigits] = useState('00');
-    const [color, setColor] = useState('red');
-    const [background, setBackground] = useState('#B30000');
-    const [border, setBorder] = useState('2px solid paelvioletred');
+    // const [color, setColor] = useState('red');
+    // const [background, setBackground] = useState('#B30000');
+    // const [border, setBorder] = useState('2px solid paelvioletred');
 
-    useEffect( () => {
-        color: {props.timerActive ? setColor('red') : setColor('blue')};
-        background: {props.timerActive ? setBackground('pink') : setBackground('#C7FFEE')};
-        border: {props.timerActive ? setBorder('2px solid palevioletred') : setBorder('2px solid seagreen')};
+    // useEffect( () => {
+    //     color: {props.timerActive ? setColor('red') : setColor('blue')};
+    //     background: {props.timerActive ? setBackground('pink') : setBackground('#C7FFEE')};
+    //     border: {props.timerActive ? setBorder('2px solid palevioletred') : setBorder('2px solid seagreen')};
 
 
-    }, [props.timerActive]);
+    // }, [props.timerActive]);
 
 
     return (
@@ -71,12 +71,15 @@ const TimerDisplay = (props) => {
             </DisplayDigitContainerDiv>
         
         <TimerControlContainerDiv>
-            <div> {props.timerActive.toString()}</div>
             <StartStopButton 
                 onClick = {props.toggleTimer_handler}
-                style = {{color, background, border}}    
+                timerActive = {props.timerActive}
+                //style = {{color, background, border}}    
             > {props.timerStartStop} </StartStopButton>
-            <ResetButton onClick = {props.resetTimer_handler}> Reset </ResetButton>
+            <ResetButton 
+                onClick = {props.resetTimer_handler}
+                timerActive = {props.timerActive}
+            > Reset </ResetButton>
         </TimerControlContainerDiv>
 
 
