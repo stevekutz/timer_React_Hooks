@@ -69,6 +69,8 @@ const DisplayDigitTextDiv = styled.div`
     height: 25px;
     color: lightgray;
 
+    color: magenta;
+    font-family: DigitalDismay;
     font-size: 24px;
 
     
