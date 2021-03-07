@@ -56,11 +56,20 @@ const Timer = (props) => {
     // }
 
 
-    const timeCounter = () => {
-    
-    
-    
-    
+    const incMin = () => {
+        setTimeVal(timeVal.add(1, 'm'));
+    }
+
+    const decMin = () => {
+        setTimeVal(timeVal.subtract(1, 'm'));
+    }
+
+    const incSec = () => {
+        setTimeVal(timeVal.add(1, 's'));
+    }
+
+    const decSec = () => {
+        setTimeVal(timeVal.subtract(1, 's'));
     }
 
     // useEffect
@@ -111,7 +120,7 @@ const Timer = (props) => {
         return () => clearInterval(dateTimer)
     })    
 
-
+    
 
     return (
 
@@ -130,6 +139,11 @@ const Timer = (props) => {
 
                 toggleTimer_handler = {toggleTimer}
                 resetTimer_handler = {resetTimer}
+
+                incMin_handler = {incMin}
+                decMin_handler = {decMin}
+                incSec_handler = {incSec}
+                decSec_handler = {decSec}
 
             />
 

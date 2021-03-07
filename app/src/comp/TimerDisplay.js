@@ -47,24 +47,24 @@ const TimerDisplay = (props) => {
             <DisplayDigitContainerDiv>
 
                 <DisplayDigitsControllerContainer>
-                    <IncDecControlButton> + </IncDecControlButton>
+                    <IncDecControlButton onClick = {props.incMin_handler}> + </IncDecControlButton>
                     <DisplayTimeUnitContainerDiv>
                         <DisplayDigitTextDiv> {props.min_tens} </DisplayDigitTextDiv>
                         <DisplayDigitTextDiv> {props.min_ones} </DisplayDigitTextDiv>
                     </DisplayTimeUnitContainerDiv>
-                    <IncDecControlButton> - </IncDecControlButton>
+                    <IncDecControlButton onClick = {props.decMin_handler}> - </IncDecControlButton>
                 </DisplayDigitsControllerContainer>    
                 
                 <DisplayColonDiv> {colonText} </DisplayColonDiv>
 
                 <DisplayDigitsControllerContainer>
 
-                    <IncDecControlButton> + </IncDecControlButton>
+                    <IncDecControlButton onClick = {props.incSec_handler}> + </IncDecControlButton>
                     <DisplayTimeUnitContainerDiv>
                         <DisplayDigitTextDiv> {props.sec_tens} </DisplayDigitTextDiv>
                         <DisplayDigitTextDiv> {props.sec_ones} </DisplayDigitTextDiv>
                     </DisplayTimeUnitContainerDiv>
-                    <IncDecControlButton> - </IncDecControlButton>
+                    <IncDecControlButton onClick = {props.decSec_handler}> - </IncDecControlButton>
                                 
                 </DisplayDigitsControllerContainer>
 
