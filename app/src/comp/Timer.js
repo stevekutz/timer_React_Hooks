@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import TimerDisplay from './TimerDisplay';
 
+import {
+    TimerContainerDiv,
+
+} from '../styled/timer_style';
 
 var dayjs = require('dayjs');
 
@@ -110,7 +114,7 @@ const Timer = (props) => {
     return (
 
 
-        <div>
+        <TimerContainerDiv>
             <TimerDisplay 
                 min_tens = {timeVal.format('mm').slice(-2,1)}
                 min_ones = {timeVal.format('mm').slice(-1)}
@@ -131,18 +135,8 @@ const Timer = (props) => {
                 decSec_handler = {decSec}
 
             />
-
-            <p style = {{border: '1px solid red', width: '500px'}}> timeVal is <span style = {{minWidth: '350px'}}>  {timeVal.toString()} </span> </p>
-            <p> Direct call to date is:  {currentDate} </p>
-            <p> Date with seconds count : {secondsDateCount} </p>
-            <div>
-                <button onClick = {toggleTimer}> {timerStartStop} </button>
-                <button onClick = {resetTimer}> Reset </button>
-            
-            </div>
-
           
-        </div>
+        </TimerContainerDiv>
     
     
     )
