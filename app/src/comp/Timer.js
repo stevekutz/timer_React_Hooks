@@ -44,7 +44,8 @@ const Timer = (props) => {
 
     const resetTimer = () => {
         setTimerActive(false);
-        setSecondsCount(0);
+        // setSecondsCount(0);
+        setTimeVal((dayjs().startOf('day')));
 
         console.log("Reset FIRED")
     }
@@ -54,6 +55,13 @@ const Timer = (props) => {
     
     // }
 
+
+    const timeCounter = () => {
+    
+    
+    
+    
+    }
 
     // useEffect
     // similar to mix of componentDidMount + componentDidUpdate + componentWillUnmount
@@ -69,31 +77,32 @@ const Timer = (props) => {
     
 
     //      THIS useEffect Hook is REFACTORED into below Hook
-    // useEffect(() => {
-    //     timerActive ? setTimerStartStop('Stop') : setTimerStartStop('Start')
+    useEffect(() => {
+        timerActive ? setTimerStartStop('Stop') : setTimerStartStop('Start')
     
-    // }, [timerActive])
+    }, [timerActive])
 
 
     // // similar to mix of componentDidMount + componentDidUpdate + componentWillUnmount
-    // useEffect( () => {
-    //     if(timerActive) {
-    //         const timer = setInterval(
-    //             // () => {setSecondsCount(secondsCount + 1)}
-    //             () => {setTimeVal(startOfDay(new Date()))}
-    //         , 100)
+    useEffect( () => {
+        if(timerActive) {
+            const timer = setInterval(
+                // () => {setSecondsCount(secondsCount + 1)}
+                // () => {setTimeVal(startOfDay(new Date()))}
+                () => setTimeVal(timeVal.add(1, 's'))
+            , 100)
 
-    //         setTimerStartStop('Stop');   
-    //         // cancels operation of timer, this allows single increment else this starts count up from 0
-    //         return () => clearInterval(timer);
+            setTimerStartStop('Stop');   
+            // cancels operation of timer, this allows single increment else this starts count up from 0
+            return () => clearInterval(timer);
               
-    //     }
+        }
 
-    //     setTimerStartStop('Start')
+        setTimerStartStop('Start')
 
     
-    // //}, [])     // this is original Hook
-    // }, [timerActive, timeVal]);   // refactored
+    //}, [])     // this is original Hook
+    }, [timerActive, timeVal]);   // refactored
 
 
     useEffect( () => {
@@ -118,6 +127,10 @@ const Timer = (props) => {
             
                 timerActive = {timerActive}
                 timerStartStop = {timerStartStop}
+
+                toggleTimer_handler = {toggleTimer}
+                resetTimer_handler = {resetTimer}
+
             />
 
             <p> timeVal is {timeVal.toString()}</p>

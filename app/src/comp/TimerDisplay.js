@@ -172,8 +172,9 @@ const TimerDisplay = (props) => {
             </DisplayDigitContainerDiv>
         
         <TimerControlContainerDiv>
-            <StartStopButton> {props.timerStartStop} </StartStopButton>
-            <ResetButton> Reset </ResetButton>
+            <div> {props.timerActive.toString()}</div>
+            <StartStopButton onClick = {props.toggleTimer_handler}> {props.timerStartStop} </StartStopButton>
+            <ResetButton onClick = {props.resetTimer_handler}> Reset </ResetButton>
         </TimerControlContainerDiv>
 
 

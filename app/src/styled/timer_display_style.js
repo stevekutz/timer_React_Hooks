@@ -127,10 +127,15 @@ const IncDecControlButton = styled.button`
     `
 
     const StartStopButton = styled(TimerControlButton)`
+        // color: ${props => props.timerActive ? '#B3000' : 'seagreen'};
+        // background: ${props => props.timerActive ? 'pink' : '#C7FFEE'};
+        // border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid #11B535'}
+    
         color: ${props => props.timerActive ? '#B30000' : 'seagreen'};
         background: ${props => props.timerActive ? 'pink' : '#C7FFEE'};
-        border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid #11B535'}
-    
+        border: ${props => props.timerActive ? '2px solid palevioletred' : '2px solid seagreen'}
+
+
     `
 
 
