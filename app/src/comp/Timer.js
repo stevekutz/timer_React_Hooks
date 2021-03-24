@@ -3,6 +3,7 @@ import TimerDisplay from './TimerDisplay';
 
 import {
     TimerContainerDiv,
+    InfoDiv,
 
 } from '../styled/timer_style';
 
@@ -22,7 +23,10 @@ const Timer = (props) => {
     //      DO NOT call Hooks from inside functions, conditions,
     //      
     const [secondsDateCount, setSecondsDateCount] = useState();
+    // const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
     const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
+    const [memVal, setMemVal] = useState(timeVal.clone());
+
 
     // Set up for increment decrement
     const [incTrue, setIncTrue] = useState(true);
@@ -48,6 +52,9 @@ const Timer = (props) => {
     
     // }
 
+    const timerDirection = () => {
+        setIncTrue(!incTrue)
+    }
 
     const incMin = () => {
         setTimeVal(timeVal.add(1, 'm'));
@@ -92,11 +99,11 @@ const Timer = (props) => {
                 // () => {setSecondsCount(secondsCount + 1)}
                 // () => {setTimeVal(startOfDay(new Date()))}
                 () =>  {if (incTrue) {
-                    console.log("incTrue is >> ", incTrue);
-                    setTimeVal(timeVal.add(1, 's'))
-                } else {
-                    console.log("incTrue is >> ", incTrue);
-                    setTimeVal(timeVal.subtract(1, 's'))
+                        console.log("incTrue is >> ", incTrue);
+                        setTimeVal(timeVal.add(1, 's'))
+                    } else {
+                        console.log("incTrue is >> ", incTrue);
+                        setTimeVal(timeVal.subtract(1, 's'))
                 }}, 100)
 
 
@@ -108,7 +115,7 @@ const Timer = (props) => {
         }
 
         setTimerStartStop('Start')
-
+        setMemVal(timeVal.clone())
     
     //}, [])     // this is original Hook
     }, [timerActive, timeVal, incTrue]);   // refactored
@@ -145,9 +152,10 @@ const Timer = (props) => {
                 decSec_handler = {decSec}
 
                 incTrue = {incTrue}
-
+                timerDirection = {timerDirection}
             />
-          
+          <InfoDiv> {timeVal.toString()} </InfoDiv>
+          <InfoDiv> {memVal.toString() }</InfoDiv>
         </TimerContainerDiv>
     
     

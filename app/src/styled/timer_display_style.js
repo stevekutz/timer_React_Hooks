@@ -48,8 +48,11 @@ const DisplayDigitsControllerContainer = styled.div`
 
 `
 const SwitchContainer = styled(DisplayDigitsControllerContainer)`
+    // background = 'white'
+    
+    
     border: 1px solid yellow;
-    width: 70px;
+    width: 270px;
 `
 
 

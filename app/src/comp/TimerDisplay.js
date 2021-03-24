@@ -14,7 +14,7 @@ import {
 
 } from '../styled/timer_display_style';
 
-import { Switch } from 'antd';
+import { Slider, Switch } from 'antd';
 
 const TimerDisplay = (props) => {
 
@@ -27,7 +27,13 @@ const TimerDisplay = (props) => {
                         <Switch 
                             checkedChildren = "Inc"
                             unCheckedChildren = "Dec"
-                            style = {{ backgroundColor: props.incTrue ? 'red' : 'green'}}
+                            style = {{ background: props.incTrue ? 'seagreen' : 'deeppink'}}
+                            onChange = {props.timerDirection} 
+                            // min = {0}
+                            // max = {1}
+                            // vertical
+                            // tipFormatter = {null}
+                            // marks = {{0: 'inc', 1: 'dec'}}
                         />
                     </SwitchContainer>
                 <DisplayDigitsControllerContainer>
