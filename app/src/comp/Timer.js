@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import TimerDisplay from './TimerDisplay';
 
-
 import {
     TimerContainerDiv,
 
@@ -112,7 +111,7 @@ const Timer = (props) => {
 
     
     //}, [])     // this is original Hook
-    }, [timerActive, timeVal]);   // refactored
+    }, [timerActive, timeVal, incTrue]);   // refactored
 
 
     useEffect( () => {
@@ -144,6 +143,8 @@ const Timer = (props) => {
                 decMin_handler = {decMin}
                 incSec_handler = {incSec}
                 decSec_handler = {decSec}
+
+                incTrue = {incTrue}
 
             />
           

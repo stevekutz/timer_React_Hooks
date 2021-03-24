@@ -16,7 +16,8 @@ const DisplayContainerDiv = styled.div`
 const DisplayDigitContainerDiv = styled.div`
     border: 5px solid purple;
     
-    width: 170px;
+    // width: 170px;
+    width: 90%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -45,6 +46,10 @@ const DisplayDigitsControllerContainer = styled.div`
     width: 54px;
     height: 90px;
 
+`
+const SwitchContainer = styled(DisplayDigitsControllerContainer)`
+    border: 1px solid yellow;
+    width: 70px;
 `
 
 
@@ -160,6 +165,7 @@ export {
     DisplayDigitTextDiv,
     DisplayTimeUnitContainerDiv,
     DisplayDigitsControllerContainer,
+    SwitchContainer,
     IncDecControlButton,
     TimerControlContainerDiv,
     TimerControlButton,

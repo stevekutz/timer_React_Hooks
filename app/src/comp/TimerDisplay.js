@@ -6,6 +6,7 @@ import {
     DisplayDigitTextDiv,
     DisplayTimeUnitContainerDiv,
     DisplayDigitsControllerContainer,
+    SwitchContainer,
     IncDecControlButton,
     TimerControlContainerDiv,
     StartStopButton,
@@ -13,6 +14,7 @@ import {
 
 } from '../styled/timer_display_style';
 
+import { Switch } from 'antd';
 
 const TimerDisplay = (props) => {
 
@@ -21,7 +23,13 @@ const TimerDisplay = (props) => {
     return (
         <DisplayContainerDiv>
             <DisplayDigitContainerDiv>
-
+                    <SwitchContainer>
+                        <Switch 
+                            checkedChildren = "Inc"
+                            unCheckedChildren = "Dec"
+                            style = {{ backgroundColor: props.incTrue ? 'red' : 'green'}}
+                        />
+                    </SwitchContainer>
                 <DisplayDigitsControllerContainer>
                     <IncDecControlButton onClick = {props.incMin_handler}> + </IncDecControlButton>
                     <DisplayTimeUnitContainerDiv>

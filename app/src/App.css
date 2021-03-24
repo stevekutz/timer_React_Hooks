@@ -1,8 +1,10 @@
+@import '~antd/dist/antd.css';
+
 /* * {
     box-sizing: boder-box;
 } */
 
-.App {
+/* .App {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -13,7 +15,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 /* .App-logo {
   height: 40vmin;
