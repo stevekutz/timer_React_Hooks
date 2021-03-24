@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import TimerDisplay from './TimerDisplay';
 
+
 import {
     TimerContainerDiv,
 
@@ -23,6 +24,9 @@ const Timer = (props) => {
     //      
     const [secondsDateCount, setSecondsDateCount] = useState();
     const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
+
+    // Set up for increment decrement
+    const [incTrue, setIncTrue] = useState(true);
     
     const [timerActive, setTimerActive] = useState(false);
     const [timerStartStop, setTimerStartStop] = useState('Start');
@@ -88,8 +92,15 @@ const Timer = (props) => {
             const timer = setInterval(
                 // () => {setSecondsCount(secondsCount + 1)}
                 // () => {setTimeVal(startOfDay(new Date()))}
-                () => setTimeVal(timeVal.add(1, 's'))
-            , 100)
+                () =>  {if (incTrue) {
+                    console.log("incTrue is >> ", incTrue);
+                    setTimeVal(timeVal.add(1, 's'))
+                } else {
+                    console.log("incTrue is >> ", incTrue);
+                    setTimeVal(timeVal.subtract(1, 's'))
+                }}, 100)
+
+
 
             setTimerStartStop('Stop');   
             // cancels operation of timer, this allows single increment else this starts count up from 0
