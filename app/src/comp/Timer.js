@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import TimerDisplay from './TimerDisplay';
 import useSound from 'use-sound';
 // import {Howl, Howler} from 'howler';
-import shortBeep from '../assets/sounds/beep.mp3';
+import shortBeeps from '../assets/sounds/beep.mp3';
 import longBeep from '../assets/sounds/longbeep.mp3';
+import clickSound from '../assets/sounds/click.mp3';
 
 import {
     TimerContainerDiv,
@@ -44,9 +45,11 @@ const Timer = (props) => {
     const [timerActive, setTimerActive] = useState(false);
     const [timerStartStop, setTimerStartStop] = useState('Start');
     const [timerComplete, setTimerComplete] = useState(false);
+    const [warningActive, setWarningActive] = useState(false);    
 
     const [playLongBeep] = useSound(longBeep, {volume: 0.75});
-    const [playShortBeep] = useSound(shortBeep);
+    const [playShortBeeps] = useSound(shortBeeps);
+    const [playClick] = useSound(clickSound);
 
 
 
@@ -79,6 +82,11 @@ const Timer = (props) => {
     const timerComplete_handler = () => {
         
         setTimerComplete(false);
+    
+    }
+
+    const warningSound = () => {
+        playLongBeep()
     
     }
 
@@ -146,15 +154,23 @@ const Timer = (props) => {
                         console.log("incTrue is >> ", incTrue);
                         setTimeVal(timeVal.add(1, 's'))
                     } else if(timeObj.seconds === 0 && timeObj.minutes === 0){
-                        playShortBeep()
+                        // playLongBeep()
                         setTimerActive(false);
                         setTimerComplete(true);
                         return;
                     } 
                     else {
                         console.log("incTrue is >> ", incTrue);
+                        if(timeObj.seconds <= 6 && timeObj.seconds > 1 && timeObj.minutes === 0){
+                            playClick()
+                        } else if(timeObj.seconds === 1 && timeObj.minutes === 0){
+                            playLongBeep();
+                            setTimerActive(false);
+                            setTimerComplete(true);
+                        }
                         setTimeVal(timeVal.subtract(1, 's'))
-                }}, 100)
+
+                }}, 1000)
 
 
 
@@ -174,6 +190,8 @@ const Timer = (props) => {
     
     //}, [])     // this is original Hook
     }, [timerActive, timeVal, incTrue, storeActive]);   // refactored
+
+
 
 
 
@@ -226,12 +244,12 @@ const Timer = (props) => {
                 storeActive = {storeActive}
                 recallTimerValue = {recallTimerValue}
 
-                playShortBeep = {playShortBeep}
+                playShortBeep = {playShortBeeps}
 
             />
           <InfoDiv> {timeVal.toString()} </InfoDiv>
           <InfoDiv> {memVal.toString() }</InfoDiv>
-          <Button onClick = {playShortBeep}> 5 short beeps, then longer </Button>
+          <Button onClick = {playShortBeeps}> 5 short beeps, then longer </Button>
           <Button onClick = {playLongBeep}> long beep </Button>
 
         </TimerContainerDiv>
