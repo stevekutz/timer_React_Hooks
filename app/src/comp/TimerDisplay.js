@@ -7,10 +7,13 @@ import {
     DisplayTimeUnitContainerDiv,
     DisplayDigitsControllerContainer,
     SwitchContainer,
+    MemContainer,
     IncDecControlButton,
     TimerControlContainerDiv,
     StartStopButton,
-    ResetButton
+    ResetButton,
+    MemButton,
+    RecallButton,
 
 } from '../styled/timer_display_style';
 
@@ -57,6 +60,12 @@ const TimerDisplay = (props) => {
                     <IncDecControlButton onClick = {props.decSec_handler}> - </IncDecControlButton>
                                 
                 </DisplayDigitsControllerContainer>
+
+                <MemContainer>
+                    <MemButton> Store </MemButton>
+                    <RecallButton> Recall </RecallButton>
+                </MemContainer>
+
 
             </DisplayDigitContainerDiv>
         

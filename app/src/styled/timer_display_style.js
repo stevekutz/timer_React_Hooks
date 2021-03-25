@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 const DisplayContainerDiv = styled.div`
     
     border: 3px solid deeppink;
-    width: 250px;
+    width: 350px;
     color: red;
     padding:
     display: flex;
@@ -49,12 +49,17 @@ const DisplayDigitsControllerContainer = styled.div`
 `
 const SwitchContainer = styled(DisplayDigitsControllerContainer)`
     // background = 'white'
-    
-    
+
     border: 1px solid yellow;
     width: 270px;
 `
 
+const MemContainer = styled(SwitchContainer)`
+    border: 1px solid green;
+
+
+
+`
 
 const DisplayTimeUnitContainerDiv = styled.div`
     border: 2px solid green;
@@ -159,6 +164,20 @@ const IncDecControlButton = styled.button`
             border: 2px solid ghostwhite;
         }
     `
+    const MemButton = styled(TimerControlButton)`
+        border: 1px solid lightcoral;
+        background: orangered;
+        color: lightgrey;
+        width: 60px;
+    
+    `
+
+    const RecallButton = styled(MemButton)`
+        border: 1px solid lightseagreen;
+        background: darkcyan;
+        color: lightgrey;
+    
+    `
 
 
 export {
@@ -169,9 +188,12 @@ export {
     DisplayTimeUnitContainerDiv,
     DisplayDigitsControllerContainer,
     SwitchContainer,
+    MemContainer,
     IncDecControlButton,
     TimerControlContainerDiv,
     TimerControlButton,
     StartStopButton,
-    ResetButton
+    ResetButton,
+    MemButton,
+    RecallButton,
 };
