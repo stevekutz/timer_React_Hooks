@@ -22,6 +22,14 @@ import { Slider, Switch } from 'antd';
 const TimerDisplay = (props) => {
 
     const colonText = ':';
+    let showRecall;
+    
+
+    if (props.storeActive) {
+        showRecall = (<RecallButton onClick = {props.recallTimerValue}> Recall </RecallButton>);
+    } else {
+        showRecall = null;
+    }
 
     return (
         <DisplayContainerDiv>
@@ -62,8 +70,8 @@ const TimerDisplay = (props) => {
                 </DisplayDigitsControllerContainer>
 
                 <MemContainer>
-                    <MemButton> Store </MemButton>
-                    <RecallButton> Recall </RecallButton>
+                    <MemButton onClick = {props.storeTimerValue}> Store </MemButton>
+                    {showRecall}
                 </MemContainer>
 
 

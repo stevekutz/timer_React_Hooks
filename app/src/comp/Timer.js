@@ -26,6 +26,7 @@ const Timer = (props) => {
     // const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
     const [timeVal, setTimeVal] = useState(dayjs().startOf('day'));
     const [memVal, setMemVal] = useState(timeVal.clone());
+    const [storeActive, setStoreActive] = useState(false);
 
 
     // Set up for increment decrement
@@ -43,14 +44,30 @@ const Timer = (props) => {
         setTimerActive(false);
         // setSecondsCount(0);
         setTimeVal((dayjs().startOf('day')));
+        setMemVal(timeVal);
+        setStoreActive(false);
 
         console.log("Reset FIRED")
+    }
+
+    const storeTimerValue = () => {
+        setMemVal(timeVal.clone());
+        setStoreActive(true);
+    
+    }
+
+    const recallTimerValue = () => {
+        setTimeVal(memVal.clone());
+    
     }
 
     // const getSecondsCount = () => {
     //     return secondsCount;
     
     // }
+
+
+
 
     const timerDirection = () => {
         setIncTrue(!incTrue)
@@ -71,6 +88,7 @@ const Timer = (props) => {
     const decSec = () => {
         setTimeVal(timeVal.subtract(1, 's'));
     }
+
 
     // useEffect
     // similar to mix of componentDidMount + componentDidUpdate + componentWillUnmount
@@ -115,10 +133,14 @@ const Timer = (props) => {
         }
 
         setTimerStartStop('Start')
-        setMemVal(timeVal.clone())
+        
+        if (!storeActive) {
+            setMemVal(timeVal.clone())
+        }
+        // setMemVal(timeVal.clone())
     
     //}, [])     // this is original Hook
-    }, [timerActive, timeVal, incTrue]);   // refactored
+    }, [timerActive, timeVal, incTrue, storeActive]);   // refactored
 
 
     useEffect( () => {
@@ -153,6 +175,12 @@ const Timer = (props) => {
 
                 incTrue = {incTrue}
                 timerDirection = {timerDirection}
+
+                storeTimerValue = {storeTimerValue}
+                storeActive = {storeActive}
+                recallTimerValue = {recallTimerValue}
+
+
             />
           <InfoDiv> {timeVal.toString()} </InfoDiv>
           <InfoDiv> {memVal.toString() }</InfoDiv>
