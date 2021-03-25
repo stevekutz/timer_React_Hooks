@@ -1,15 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import TimerDisplay from './TimerDisplay';
+import useSound from 'use-sound';
+// import {Howl, Howler} from 'howler';
+import shortBeep from '../assets/sounds/beep.mp3';
+import longBeep from '../assets/sounds/longbeep.mp3';
 
 import {
     TimerContainerDiv,
     InfoDiv,
 
 } from '../styled/timer_style';
+import { Button } from 'antd';
 
 var dayjs = require('dayjs');
 var toObject = require('dayjs/plugin/toObject');
 dayjs.extend(toObject)
+
 
 // var startOfDay = require('date-fns/startOfDay')
 // var add = require('date-fns/add');
@@ -17,7 +23,8 @@ dayjs.extend(toObject)
 
 const Timer = (props) => {
 
-    const currentDate = new Date().toDateString();
+    // const currentDate = new Date().toDateString();
+    
     
 
     // Hooks use arra\y destructuring fro delcaring state variables
@@ -36,11 +43,16 @@ const Timer = (props) => {
     
     const [timerActive, setTimerActive] = useState(false);
     const [timerStartStop, setTimerStartStop] = useState('Start');
-    const [timerComplete, setTimerComplete] = useState("false");
+    const [timerComplete, setTimerComplete] = useState(false);
+
+    const [playLongBeep] = useSound(longBeep, {volume: 0.75});
+    const [playShortBeep] = useSound(shortBeep);
+
+
 
     const toggleTimer = () => {
         setTimerActive(!timerActive);
-    
+        // playClip();
     }
 
     const resetTimer = () => {
@@ -61,7 +73,7 @@ const Timer = (props) => {
 
     const recallTimerValue = () => {
         setTimeVal(memVal.clone());
-    
+        
     }
 
     const timerComplete_handler = () => {
@@ -116,12 +128,16 @@ const Timer = (props) => {
     //      THIS useEffect Hook is REFACTORED into below Hook
     useEffect(() => {
         timerActive ? setTimerStartStop('Stop') : setTimerStartStop('Start')
-    
+
+
     }, [timerActive])
 
 
     // // similar to mix of componentDidMount + componentDidUpdate + componentWillUnmount
     useEffect( () => {
+
+        let timeObj = dayjs(timeVal).toObject();
+
         if(timerActive) {
             const timer = setInterval(
                 // () => {setSecondsCount(secondsCount + 1)}
@@ -129,8 +145,8 @@ const Timer = (props) => {
                 () =>  {if (incTrue) {
                         console.log("incTrue is >> ", incTrue);
                         setTimeVal(timeVal.add(1, 's'))
-                    } else if(dayjs(timeVal).toObject().seconds.toString() === '0'){
-                        alert("COUNTDOWN ZERO !!! ");
+                    } else if(timeObj.seconds === 0 && timeObj.minutes === 0){
+                        playShortBeep()
                         setTimerActive(false);
                         setTimerComplete(true);
                         return;
@@ -160,11 +176,23 @@ const Timer = (props) => {
     }, [timerActive, timeVal, incTrue, storeActive]);   // refactored
 
 
-    useEffect( () => {
-        const dateTimer = setInterval( () => {setSecondsDateCount(new Date().toLocaleTimeString())}, 1000)
+
+    // useEffect(() => {
+    //     if (timerComplete) {
+    //         audioClip.play();
+    //     } else {
+    //         audioClip.pause();
+    //         // setTimerComplete(false);
+    //     }
+
+
+    // },[timerComplete, audioClip])
+
+    // useEffect( () => {
+    //     const dateTimer = setInterval( () => {setSecondsDateCount(new Date().toLocaleTimeString())}, 1000)
         
-        return () => clearInterval(dateTimer)
-    })    
+    //     return () => clearInterval(dateTimer)
+    // })    
 
 
     
@@ -198,11 +226,14 @@ const Timer = (props) => {
                 storeActive = {storeActive}
                 recallTimerValue = {recallTimerValue}
 
+                playShortBeep = {playShortBeep}
 
             />
           <InfoDiv> {timeVal.toString()} </InfoDiv>
           <InfoDiv> {memVal.toString() }</InfoDiv>
-          <InfoDiv> {dayjs(timeVal).toObject().seconds.toString()} </InfoDiv>
+          <Button onClick = {playShortBeep}> 5 short beeps, then longer </Button>
+          <Button onClick = {playLongBeep}> long beep </Button>
+
         </TimerContainerDiv>
     
     
