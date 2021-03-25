@@ -36,8 +36,8 @@ const TimerDisplay = (props) => {
             <DisplayDigitContainerDiv>
                     <SwitchContainer>
                         <Switch 
-                            checkedChildren = "Inc"
-                            unCheckedChildren = "Dec"
+                            checkedChildren = "Dec"
+                            unCheckedChildren = "Inc"
                             style = {{ background: props.incTrue ? 'seagreen' : 'deeppink'}}
                             onChange = {props.timerDirection} 
                             // min = {0}

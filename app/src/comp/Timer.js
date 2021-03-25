@@ -8,6 +8,8 @@ import {
 } from '../styled/timer_style';
 
 var dayjs = require('dayjs');
+var toObject = require('dayjs/plugin/toObject');
+dayjs.extend(toObject)
 
 // var startOfDay = require('date-fns/startOfDay')
 // var add = require('date-fns/add');
@@ -34,6 +36,7 @@ const Timer = (props) => {
     
     const [timerActive, setTimerActive] = useState(false);
     const [timerStartStop, setTimerStartStop] = useState('Start');
+    const [timerComplete, setTimerComplete] = useState("false");
 
     const toggleTimer = () => {
         setTimerActive(!timerActive);
@@ -60,6 +63,13 @@ const Timer = (props) => {
         setTimeVal(memVal.clone());
     
     }
+
+    const timerComplete_handler = () => {
+        
+        setTimerComplete(false);
+    
+    }
+
 
     // const getSecondsCount = () => {
     //     return secondsCount;
@@ -119,7 +129,13 @@ const Timer = (props) => {
                 () =>  {if (incTrue) {
                         console.log("incTrue is >> ", incTrue);
                         setTimeVal(timeVal.add(1, 's'))
-                    } else {
+                    } else if(dayjs(timeVal).toObject().seconds.toString() === '0'){
+                        alert("COUNTDOWN ZERO !!! ");
+                        setTimerActive(false);
+                        setTimerComplete(true);
+                        return;
+                    } 
+                    else {
                         console.log("incTrue is >> ", incTrue);
                         setTimeVal(timeVal.subtract(1, 's'))
                 }}, 100)
@@ -137,7 +153,8 @@ const Timer = (props) => {
         if (!storeActive) {
             setMemVal(timeVal.clone())
         }
-        // setMemVal(timeVal.clone())
+        
+        // console.log("memVal ====> ", dayjs(memVal).toObject());
     
     //}, [])     // this is original Hook
     }, [timerActive, timeVal, incTrue, storeActive]);   // refactored
@@ -148,6 +165,7 @@ const Timer = (props) => {
         
         return () => clearInterval(dateTimer)
     })    
+
 
     
     return (
@@ -184,6 +202,7 @@ const Timer = (props) => {
             />
           <InfoDiv> {timeVal.toString()} </InfoDiv>
           <InfoDiv> {memVal.toString() }</InfoDiv>
+          <InfoDiv> {dayjs(timeVal).toObject().seconds.toString()} </InfoDiv>
         </TimerContainerDiv>
     
     
